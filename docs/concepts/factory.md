@@ -19,8 +19,12 @@ Factories input raw elements and energy and output goods using an assembler. The
 - **Sensor Factory**
   - Goods: Planet searchers/scanners, Ship searchers/scanners
 - **Consumer Goods Factory**
-  - Goods: Basic, Entertainment, Beauty
-- **Farming Equipment**
-  - Goods: "Tracker", Food Storage, Livestock "Processors"
-- **Harvesting Equipment**
-  - Goods: Gas Harvesters, Gas Storage
+  - Goods: Basic, Entertainment, Fashion, Art, Robotic Servants
+- **Farming Equipment Factory**
+  - Goods: "Tracker", Livestock "Processors", Fertilizer
+- **Harvesting Equipment Factory**
+  - Goods: Gas Harvesters, Gas Pumps
+- **Pharmaceuticals Factory**
+  - Goods: Medicine, Drugs
+- **Transportation Equipment Factory**
+  - Goods: General Storage, Food Storage, Gas Storage
