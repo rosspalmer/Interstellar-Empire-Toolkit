@@ -4,26 +4,23 @@ Factories input raw elements and energy and output goods using an assembler. The
 
 ## Factory Types
 
-_Note: Below are generalizations of inputs and outputs which are actually defined by individual blueprints_
-
-- *Power Source Factory*
-  - Inputs: Fe, Cu, C
-  - Outputs: Fusion, Fission, Fossil Fuel, Solar, Wind
-- *Power Storage Factory*
-  - Inputs:
-  - Outputs: Battery
-- *Assembler Factory*
-  - Inputs: Ti, Cu, Ag
-  - Outputs: Assemblers
-- *De-assembler Factory*
-  - Inputs:
-  - Outputs: De-assemblers
-- *Mining Equipment Factory*
-  - Inputs: Fe, C, O
-  - Outputs: Mining Lasers, Material Storage
-- *Computer Component Factory*
-  - Inputs:
-  - Outputs: Processors, storage drives, RAM
-- *Sensor Factory*
-  - Inputs:
-  - Outputs: Planet finders, Planet scanners
+- **Power Source Factory**
+  - Goods: Fusion, Fission, Fossil Fuel, Solar, Wind
+- **Power Storage Factory**
+  - Goods: Battery
+- **Assembler Factory**
+  - Goods: Assemblers
+- **De-assembler Factory**
+  - Goods: De-assemblers
+- **Mining Equipment Factory**
+  - Goods: Mining Lasers, Material Storage
+- **Computer Component Factory**
+  - Goods: Processors, storage drives, RAM
+- **Sensor Factory**
+  - Goods: Planet searchers/scanners, Ship searchers/scanners
+- **Consumer Goods Factory**
+  - Goods: Basic, Entertainment, Beauty
+- **Farming Equipment**
+  - Goods: "Tracker", Food Storage, Livestock "Processors"
+- **Harvesting Equipment**
+  - Goods: Gas Harvesters, Gas Storage
