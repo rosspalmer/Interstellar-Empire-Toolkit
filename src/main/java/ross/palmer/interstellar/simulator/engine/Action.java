@@ -1,12 +1,13 @@
 package ross.palmer.interstellar.simulator.engine;
 
 import ross.palmer.interstellar.exceptions.InterstellarToolkitRuntimeException;
+import ross.palmer.interstellar.utilities.IdGenerator;
 
 import java.util.Objects;
 
 public class Action implements Comparable<Action> {
 
-    private long id = ActionIDGenerator.getNextActionId();
+    private long id = IdGenerator.getNextId("Action");
     private Runnable runnable;
     private double actionTime = 0;
     private boolean inQueue = false;
