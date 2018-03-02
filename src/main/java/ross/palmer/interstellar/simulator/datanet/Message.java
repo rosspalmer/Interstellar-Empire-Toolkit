@@ -10,7 +10,8 @@ import java.util.List;
 public class Message {
 
     private final long id;
-    private final double timestamp;
+    private final double sentTimestamp;
+    private double receivedTimestamp;
     private final Entity fromEntity;
     private final Entity toEntity;
 
@@ -21,7 +22,7 @@ public class Message {
     public Message(String name, Entity fromEntity, Entity toEntity) {
 
         id = IdGenerator.getNextId("Message");
-        timestamp = Simulator.getCurrentTime();
+        sentTimestamp = Simulator.getCurrentTime();
         this.fromEntity = fromEntity;
         this.toEntity = toEntity;
 
@@ -45,28 +46,27 @@ public class Message {
         return toEntity;
     }
 
-    public Runnable getRunnable() {
-        return runnable;
-    }
-
     public String getText() {
         return text;
-    }
-
-    public boolean hasRunnable() {
-        return runnable != null;
     }
 
     public boolean notReceived() {
         return !received;
     }
 
-    public double getTimestamp() {
-        return timestamp;
+    public double getReceivedTimestamp() {
+        return receivedTimestamp;
     }
 
-    public void setReceived(boolean received) {
-        this.received = received;
+    public double getSentTimestamp() {
+        return sentTimestamp;
+    }
+
+    public void receiveMessage() {
+        this.received = true;
+        receivedTimestamp = Simulator.getCurrentTime();
+        if (runnable != null)
+            runnable.run();
     }
 
     public void setRunnable(Runnable runnable) {

@@ -34,12 +34,8 @@ public class DataView {
 
     private void updateMessages(DataNode dataNode) {
         Set<Message> newMessages = dataNode.getMessageSet(entity);
+        newMessages.forEach(Message::receiveMessage);
         messageSet.addAll(newMessages);
-        messageSet.forEach(message -> {
-            message.setReceived(true);
-            if (message.hasRunnable())
-                message.getRunnable().run();
-        });
     }
 
 }
