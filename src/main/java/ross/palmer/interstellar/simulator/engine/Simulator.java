@@ -1,14 +1,26 @@
 package ross.palmer.interstellar.simulator.engine;
 
 import ross.palmer.interstellar.exceptions.InterstellarToolkitRuntimeException;
+import ross.palmer.interstellar.simulator.datanet.DataBase;
+import ross.palmer.interstellar.simulator.datanet.DataStream;
+import ross.palmer.interstellar.simulator.datanet.Message;
 
 public class Simulator {
 
+    private static DataBase dataBase;
     private static ActionQueue actionQueue;
     private static double currentTime;
 
     public static void addActionToQueue(Action action) {
         actionQueue.addToQueue(action);
+    }
+
+    public static void addMessageToDataBase(Message message) {
+        dataBase.addMessage(message);
+    }
+
+    public static void addDataStreamToDataBase(DataStream dataStream) {
+        dataBase.addDataStream(dataStream);
     }
 
     public static double getCurrentTime() {
@@ -45,5 +57,7 @@ public class Simulator {
     public static void setCurrentTime(double currentTime) {
         Simulator.currentTime = currentTime;
     }
+
+    public static void setDataBase(DataBase dataBase) { Simulator.dataBase = dataBase; }
 
 }
