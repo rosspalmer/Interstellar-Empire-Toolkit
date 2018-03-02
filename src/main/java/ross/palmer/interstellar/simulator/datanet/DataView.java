@@ -24,7 +24,7 @@ public class DataView {
 
     private void updateDataStreamSubscriptions(DataNode dataNode) {
         dataStreamSet.forEach(subscription -> {
-            DataStreamSubscription otherSubscription = dataNode.getDataStreamSubscription(subscription.getId());
+            DataStreamSubscription otherSubscription = dataNode.getDataStreamSubscription(subscription.getDataStreamId());
             if (otherSubscription != null) {
                 subscription.setLastSyncTime(
                         Math.max(subscription.getLastSyncTime(), otherSubscription.getLastSyncTime()));
