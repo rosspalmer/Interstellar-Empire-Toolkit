@@ -14,6 +14,9 @@ public class StarData {
     private final long primaryStarId;
     private final int starsInSystem;
 
+    private final double x;
+    private final double y;
+    private final double z;
     private final Point3D coordinates;
     private final String constellation;
 
@@ -31,9 +34,9 @@ public class StarData {
         primaryStarId = new Long(csvRecord.get("comp_primary"));
         starsInSystem = new Integer(csvRecord.get("comp"));
 
-        double x = new Double(csvRecord.get("x"));
-        double y = new Double(csvRecord.get("y"));
-        double z = new Double(csvRecord.get("z"));
+        x = new Double(csvRecord.get("x"));
+        y = new Double(csvRecord.get("y"));
+        z = new Double(csvRecord.get("z"));
         coordinates = new Point3D(x, y, z);
         constellation = csvRecord.get("con");
 
@@ -80,6 +83,18 @@ public class StarData {
 
     public double getLuminosity() {
         return luminosity;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getZ() {
+        return z;
     }
 
     @Override
