@@ -12,6 +12,8 @@ public class CSVImports {
 
     public static void stars(Galaxy galaxy) throws IOException {
 
+        System.out.println("=== Loading Star Data ===");
+
         InputStream stream = new FileInputStream("within300pc.csv");
         Reader reader = new ReaderUTF8(stream);
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader());
