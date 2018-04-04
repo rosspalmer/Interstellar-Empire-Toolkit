@@ -4,6 +4,8 @@ import javafx.geometry.Point3D;
 import org.apache.commons.csv.CSVRecord;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StarData {
 
@@ -21,6 +23,8 @@ public class StarData {
     private final String constellation;
 
     private final String spectFull;
+    private final StarClass starClass;
+
     private final double magnitude;
     private final double luminosity;
 //    private final double colorIndex;
@@ -41,6 +45,8 @@ public class StarData {
         constellation = csvRecord.get("con");
 
         spectFull = csvRecord.get("spect");
+        starClass = generateStarClass();
+
         magnitude = new Double(csvRecord.get("absmag"));
         luminosity = new Double(csvRecord.get("lum"));
 //        colorIndex = new Double(csvRecord.get("ci"));
@@ -97,6 +103,26 @@ public class StarData {
         return z;
     }
 
+    public StarClass getStarClass() {
+        return starClass;
+    }
+
+    private StarClass generateStarClass() {
+
+        Pattern pattern = Pattern.compile("^[O|A|B|F|G|K|M]*");
+        Matcher matcher = pattern.matcher(spectFull);
+
+        if (!matcher.find())
+            return null;
+
+        String starClassString = spectFull.substring(matcher.start(), matcher.end());
+        if (matcher.start() == 0 && matcher.end() == 0)
+            return null;
+
+        return StarClass.valueOf(starClassString);
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -109,4 +135,16 @@ public class StarData {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public enum StarClass {
+        O ("O"), B ("B"), A ("A"), F ("F"), G ("G"), K ("K"), M ("M");
+
+        StarClass(String stringValue) {
+            this.stringValue = stringValue;
+        }
+
+        private String stringValue;
+
+    }
+
 }
