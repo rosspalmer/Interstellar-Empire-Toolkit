@@ -1,11 +1,10 @@
 package ross.palmer.interstellar;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import ross.palmer.interstellar.dataIO.CSVImports;
-import ross.palmer.interstellar.gui.SimpleLayout;
-import ross.palmer.interstellar.gui.explorer.StarTableView;
 import ross.palmer.interstellar.simulator.galaxy.Galaxy;
 
 public class Main extends Application {
@@ -21,19 +20,19 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        galaxy = new Galaxy();
-        CSVImports.stars(galaxy);
+//        galaxy = new Galaxy();
+//        CSVImports.stars(galaxy);
 
-        SimpleLayout layout = new SimpleLayout();
-
-        Scene scene = new Scene(layout, 1500, 1000);
-        primaryStage.setTitle(applicationName);
-        primaryStage.setScene(scene);
-
-        StarTableView table = new StarTableView();
-
+        primaryStage.setTitle("PhleidesDeveloperToolkit");
+        Pane rootPane = FXMLLoader.load(getClass().getResource("/main.fxml"));
+        Scene rootScene = new Scene(rootPane);
+        primaryStage.setScene(rootScene);
         primaryStage.show();
+
     }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 
 }
