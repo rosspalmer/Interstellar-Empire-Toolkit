@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ross.palmer.interstellar.dataIO.CSVImports;
 import ross.palmer.interstellar.gui.SimpleLayout;
-import ross.palmer.interstellar.gui.StarTableView;
+import ross.palmer.interstellar.gui.explorer.StarTableView;
 import ross.palmer.interstellar.simulator.galaxy.Galaxy;
 
 public class Main extends Application {
@@ -26,7 +26,7 @@ public class Main extends Application {
 
         SimpleLayout layout = new SimpleLayout();
 
-        Scene scene = new Scene(layout, 300, 1000);
+        Scene scene = new Scene(layout, 1500, 1000);
         primaryStage.setTitle(applicationName);
         primaryStage.setScene(scene);
 

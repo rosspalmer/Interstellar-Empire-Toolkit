@@ -2,6 +2,7 @@ package ross.palmer.interstellar.simulator.galaxy;
 
 import javafx.geometry.Point3D;
 import org.apache.commons.csv.CSVRecord;
+import ross.palmer.interstellar.gui.explorer.SystemExplorer;
 
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -24,10 +25,13 @@ public class StarData {
 
     private final String spectFull;
     private final StarClass starClass;
+    private final StarSequence starSequence;
 
     private final double magnitude;
     private final double luminosity;
 //    private final double colorIndex;
+
+    private final boolean complete;
 
     public StarData(CSVRecord csvRecord) {
 
@@ -46,10 +50,13 @@ public class StarData {
 
         spectFull = csvRecord.get("spect");
         starClass = generateStarClass();
+        starSequence = generateStarSequence();
 
         magnitude = new Double(csvRecord.get("absmag"));
         luminosity = new Double(csvRecord.get("lum"));
 //        colorIndex = new Double(csvRecord.get("ci"));
+
+        complete = starClass != null && starSequence != null;
 
     }
 
@@ -107,9 +114,17 @@ public class StarData {
         return starClass;
     }
 
+    public StarSequence getStarSequence() {
+        return starSequence;
+    }
+
+    public boolean isComplete() {
+        return complete;
+    }
+
     private StarClass generateStarClass() {
 
-        Pattern pattern = Pattern.compile("^[O|A|B|F|G|K|M]*");
+        Pattern pattern = Pattern.compile("^[OABFGKM]");
         Matcher matcher = pattern.matcher(spectFull);
 
         if (!matcher.find())
@@ -121,6 +136,28 @@ public class StarData {
 
         return StarClass.valueOf(starClassString);
 
+    }
+
+    private StarSequence generateStarSequence() {
+
+        Pattern pattern = Pattern.compile("[VI]+");
+        Matcher matcher = pattern.matcher(spectFull);
+
+        if (!matcher.find())
+            return null;
+
+        String starSequenceString = spectFull.substring(matcher.start(), matcher.end());
+        if (matcher.start() == 0 && matcher.end() == 0)
+            return null;
+
+        StarSequence starSequence = null;
+        for (StarSequence sequenceEnum : StarSequence.values()) {
+            if (sequenceEnum.stringValue.equals(starSequenceString)) {
+                starSequence = sequenceEnum;
+                break;
+            }
+        }
+        return starSequence;
     }
 
     @Override
@@ -137,7 +174,14 @@ public class StarData {
     }
 
     public enum StarClass {
-        O ("O"), B ("B"), A ("A"), F ("F"), G ("G"), K ("K"), M ("M");
+
+        O ("O"),
+        B ("B"),
+        A ("A"),
+        F ("F"),
+        G ("G"),
+        K ("K"),
+        M ("M");
 
         StarClass(String stringValue) {
             this.stringValue = stringValue;
@@ -145,6 +189,21 @@ public class StarData {
 
         private String stringValue;
 
+    }
+
+    public enum StarSequence {
+
+        SUPER_GIANT ("I"),
+        BRIGHT_GIANT ("II"),
+        GIANT ("III"),
+        SUB_GIANT ("IV"),
+        MAIN ("V");
+
+        StarSequence(String stringValue) {
+            this.stringValue = stringValue;
+        }
+
+        private String stringValue;
     }
 
 }
