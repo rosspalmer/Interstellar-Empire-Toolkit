@@ -1,4 +1,4 @@
-package ross.palmer.interstellar.gui;
+package ross.palmer.interstellar.gui.explorer;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,8 +49,18 @@ public class StarTableView extends TableView {
         spectFull.setCellValueFactory(
                 new PropertyValueFactory<>("spectFull"));
 
+        TableColumn<StarData, StarData.StarClass> starClass = new TableColumn<>("Star Class");
+        starClass.setMinWidth(100);
+        starClass.setCellValueFactory(
+                new PropertyValueFactory<>("starClass"));
+
+        TableColumn<StarData, StarData.StarClass> starSequence = new TableColumn<>("Star Sequence");
+        starSequence.setMinWidth(100);
+        starSequence.setCellValueFactory(
+                new PropertyValueFactory<>("starSequence"));
+
         setItems(data);
-        getColumns().addAll(idCol, nameCol, x, y, z, spectFull);
+        getColumns().addAll(idCol, nameCol, x, y, z, spectFull, starClass, starSequence);
 
     }
 
