@@ -7,50 +7,36 @@
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="ross.palmer.interstellar.MainController"
-      prefHeight="400.0" prefWidth="600.0">
-    <VBox prefWidth="150.0" style="-fx-background-color: black;">
-        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Company"
-                onAction="#handleCompanySelection">
-            <font>
-                <Font name="Consolas Bold" size="15.0"/>
-            </font>
-        </Button>
-        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Galaxy"
-                onAction="#handleGalaxySelection">
-            <font>
-                <Font name="Consolas Bold" size="15.0"/>
-            </font>
-        </Button>
-        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Data"
-                onAction="#handleDataSelection">
-            <font>
-                <Font name="Consolas Bold" size="15.0"/>
-            </font>
-        </Button>
-        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Trade"
-                onAction="#handleTradeSelection">
-            <font>
-                <Font name="Consolas Bold" size="15.0"/>
-            </font>
-        </Button>
-        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Survey"
-                onAction="#handleSurveySelection">
-            <font>
-                <Font name="Consolas Bold" size="15.0"/>
-            </font>
-        </Button>
-        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Extract"
-                onAction="#handleCompanySelection">
-            <font>
-                <Font name="Consolas Bold" size="15.0"/>
-            </font>
-        </Button>
-        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Build"
-                onAction="#handleCompanySelection">
-            <font>
-                <Font name="Consolas Bold" size="15.0"/>
-            </font>
-        </Button>
+      prefHeight="720.0" prefWidth="1280.0">
+    <VBox fx:id="mainSelection" maxWidth="150" minWidth="150">
+        <AnchorPane>
+            <Button text="Company" onAction="#handleCompanySelection"
+                    AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"/>
+        </AnchorPane>
+        <AnchorPane>
+            <Button text="Galaxy" onAction="#handleGalaxySelection"
+                    AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"/>
+        </AnchorPane>
+        <AnchorPane>
+            <Button text="Data" onAction="#handleDataSelection"
+                    AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"/>
+        </AnchorPane>
+        <AnchorPane>
+            <Button text="Trade" onAction="#handleTradeSelection"
+                    AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"/>
+        </AnchorPane>
+        <AnchorPane>
+            <Button text="Survey" onAction="#handleTradeSelection"
+                    AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"/>
+        </AnchorPane>
+        <AnchorPane>
+            <Button text="Extract" onAction="#handleExtractSelection"
+                    AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"/>
+        </AnchorPane>
+        <AnchorPane>
+            <Button text="Build" onAction="#handleBuildSelection"
+                    AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"/>
+        </AnchorPane>
     </VBox>
     <Pane fx:id="mainPane"/>
 </HBox>

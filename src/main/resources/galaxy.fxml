@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.chart.ScatterChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ross.palmer.interstellar.GalaxyController">
+
+    <TabPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <Tab text="Map">
+            <HBox>
+                <ScrollPane BorderPane.alignment="BASELINE_LEFT" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                    <ScatterChart fx:id="galaxyMap" prefWidth="1600" prefHeight="800">
+                        <xAxis>
+                            <CategoryAxis side="BOTTOM"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis side="LEFT"/>
+                        </yAxis>
+                    </ScatterChart>
+                </ScrollPane>
+                <Label text="RIGHT" prefWidth="20"/>
+            </HBox>
+        </Tab>
+        <Tab text="Systems">
+            <Label text="SyS" />
+        </Tab>
+    </TabPane>
+
+</AnchorPane>
