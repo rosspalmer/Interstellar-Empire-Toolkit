@@ -5,13 +5,14 @@ import org.apache.commons.csv.CSVRecord;
 import ross.palmer.interstellar.gui.explorer.SystemExplorer;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StarData {
 
     private final long id;
-    private String name;
+    private Optional<String> name;
     private final String bayer; // Bayer designation
     private final String flamsteed; // Flamsteed designation
     private final long primaryStarId;
@@ -36,7 +37,7 @@ public class StarData {
     public StarData(CSVRecord csvRecord) {
 
         id = new Long(csvRecord.get("id"));
-        name = csvRecord.get("proper").equals("") ? null : csvRecord.get("proper");
+        name = Optional.ofNullable(csvRecord.get("proper").equals("") ? null : csvRecord.get("proper"));
         bayer = csvRecord.get("bayer").equals("") ? null : csvRecord.get("bayer");
         flamsteed = csvRecord.get("flam").equals("") ? null : csvRecord.get("flam");
         primaryStarId = new Long(csvRecord.get("comp_primary"));
@@ -64,7 +65,7 @@ public class StarData {
         return id;
     }
 
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
