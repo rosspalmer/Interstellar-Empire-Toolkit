@@ -2,7 +2,6 @@ package ross.palmer.interstellar.simulator.galaxy;
 
 import javafx.geometry.Point3D;
 import org.apache.commons.csv.CSVRecord;
-import ross.palmer.interstellar.gui.explorer.SystemExplorer;
 
 import java.util.Objects;
 import java.util.Optional;

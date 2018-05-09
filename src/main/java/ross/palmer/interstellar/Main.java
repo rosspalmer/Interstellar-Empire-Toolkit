@@ -24,9 +24,9 @@ public class Main extends Application {
 //        CSVImports.stars(galaxy);
 
         primaryStage.setTitle("PhleidesDeveloperToolkit");
-        Pane rootPane = FXMLLoader.load(getClass().getResource("/main.fxml"));
+        Pane rootPane = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
         Scene rootScene = new Scene(rootPane);
-        rootScene.getStylesheets().add(getClass().getResource("/mainStyle.css").toExternalForm());
+        rootScene.getStylesheets().add(getClass().getResource("/css/mainStyle.css").toExternalForm());
         primaryStage.setScene(rootScene);
         primaryStage.show();
 

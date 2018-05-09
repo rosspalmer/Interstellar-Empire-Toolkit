@@ -1,4 +1,4 @@
-package ross.palmer.interstellar;
+package ross.palmer.interstellar.gui.controllers;
 
 import javafx.scene.chart.ScatterChart;
 

@@ -1,4 +1,4 @@
-package ross.palmer.interstellar.gui.explorer;
+package ross.palmer.interstellar.gui.old.explorer;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

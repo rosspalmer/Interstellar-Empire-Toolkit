@@ -11,7 +11,7 @@
 <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
       minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="920.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ross.palmer.interstellar.MainController">
+      fx:controller="ross.palmer.interstellar.gui.controllers.MainController">
    <children>
       <VBox prefWidth="150.0" style="-fx-background-color: black;">
          <children>

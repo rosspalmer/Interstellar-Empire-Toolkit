@@ -1,11 +1,11 @@
-package ross.palmer.interstellar.gui;
+package ross.palmer.interstellar.gui.old;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import ross.palmer.interstellar.gui.explorer.SystemExplorer;
+import ross.palmer.interstellar.gui.old.explorer.SystemExplorer;
 
 public class SimpleLayout extends GridPane {
 

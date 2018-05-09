@@ -1,8 +1,6 @@
-package ross.palmer.interstellar;
+package ross.palmer.interstellar.gui.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -18,7 +16,7 @@ public class MainController {
 
     public MainController() throws IOException {
         companyPane = new Pane();
-        galaxyPane = FXMLLoader.load(getClass().getResource("/galaxy.fxml"));
+        galaxyPane = FXMLLoader.load(getClass().getResource("/fxml/galaxy/galaxy.fxml"));
     }
 
     public void handleCompanySelection() {
