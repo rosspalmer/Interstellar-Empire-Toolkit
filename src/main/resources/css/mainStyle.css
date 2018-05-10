@@ -1,6 +1,6 @@
 
 .button {
-    -fx-background-color: "fb4934";
+    -fx-background-color: "#5f27cd";
     -fx-background-radius: 3;
     -fx-background-insets: 1.5;
     -fx-text-fill: black;
@@ -15,9 +15,13 @@
 }
 
 .button:focused {
-    -fx-background-color: "8ec07c";
+    -fx-background-color: "0abde3";
 }
 
 #mainSelection {
-    -fx-background-color: "1d2021";
+    -fx-background-color: "222f3e";
+}
+
+#viewPane {
+    -fx-background-color: "576574"
 }

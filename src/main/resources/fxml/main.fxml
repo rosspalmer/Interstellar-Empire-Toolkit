@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
 
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
@@ -38,5 +37,5 @@
                     AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"/>
         </AnchorPane>
     </VBox>
-    <Pane fx:id="mainPane"/>
+    <AnchorPane fx:id="viewPane" prefHeight="100" prefWidth="200" maxHeight="Infinity" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
 </HBox>

@@ -1,32 +1,30 @@
 package ross.palmer.interstellar.gui.controllers;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import ross.palmer.interstellar.gui.scenes.MainPaneScene;
 
 import java.io.IOException;
 
 public class MainController {
 
-    public Pane mainPane;
+    private MainPaneScene mainPaneBuilder;
+
+    public Pane viewPane;
     public VBox mainSelection;
 
-    private Pane companyPane;
-    private Pane galaxyPane;
 
     public MainController() throws IOException {
-        companyPane = new Pane();
-        galaxyPane = FXMLLoader.load(getClass().getResource("/fxml/galaxy/galaxy.fxml"));
+        viewPane = new Pane();
+        mainPaneBuilder = new MainPaneScene(viewPane);
     }
 
     public void handleCompanySelection() {
-        mainPane.getChildren().clear();
-        mainPane.getChildren().add(companyPane);
+        setViewPane(mainPaneBuilder.getCompanyPane());
     }
 
     public void handleGalaxySelection() {
-        mainPane.getChildren().clear();
-        mainPane.getChildren().add(galaxyPane);
+        setViewPane(mainPaneBuilder.getGalaxyPane());
     }
 
     public void handleDataSelection() {
@@ -43,4 +41,10 @@ public class MainController {
 
     public void handleExtractSelection() {
     }
+
+    private void setViewPane(Pane newPane) {
+        viewPane.getChildren().clear();
+        viewPane.getChildren().add(newPane);
+    }
+
 }
