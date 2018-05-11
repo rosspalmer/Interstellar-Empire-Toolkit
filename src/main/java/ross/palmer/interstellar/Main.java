@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ross.palmer.interstellar.dataIO.CSVImports;
 import ross.palmer.interstellar.simulator.galaxy.Galaxy;
 
 public class Main extends Application {
@@ -20,8 +21,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-//        galaxy = new Galaxy();
-//        CSVImports.stars(galaxy);
+        galaxy = new Galaxy();
+        CSVImports.stars(galaxy);
 
         primaryStage.setTitle("PhleidesDeveloperToolkit");
         Pane rootPane = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));

@@ -29,7 +29,7 @@ public class StarData {
 
     private final double magnitude;
     private final double luminosity;
-//    private final double colorIndex;
+    private final double colorIndex;
 
     private final boolean complete;
 
@@ -54,7 +54,7 @@ public class StarData {
 
         magnitude = new Double(csvRecord.get("absmag"));
         luminosity = new Double(csvRecord.get("lum"));
-//        colorIndex = new Double(csvRecord.get("ci"));
+        colorIndex = new Double(csvRecord.get("ci"));
 
         complete = starClass != null && starSequence != null;
 
