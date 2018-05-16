@@ -3,9 +3,7 @@ package ross.palmer.interstellar.simulator.galaxy;
 import org.apache.commons.csv.CSVRecord;
 import ross.palmer.interstellar.simulator.datanet.DataNode;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class StellarSystem {
 
@@ -15,11 +13,14 @@ public class StellarSystem {
     private Set<StarData> starDataSet;
     private int starsInSystem;
 
+    private List<Planet> planets;
+
     public StellarSystem(CSVRecord csvRecord) {
         starData = new StarData(csvRecord);
         id = starData.getId();
         dataNode = new DataNode();
         starDataSet = new HashSet<>();
+        planets = new ArrayList<>();
     }
 
     public void addStarData(StarData starData) {
@@ -46,5 +47,9 @@ public class StellarSystem {
 
     public StarData getStarData() {
         return starData;
+    }
+
+    public void addPlanet(Planet planet) {
+        planets.add(planet);
     }
 }
