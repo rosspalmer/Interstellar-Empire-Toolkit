@@ -14,14 +14,13 @@ public class CSVImports {
 
         System.out.println("=== Loading Star Data ===");
 
-        InputStream stream = new FileInputStream("src/main/resources/within300pc.csv");
+        InputStream stream = new FileInputStream("src/main/resources/data/stars.csv");
         Reader reader = new ReaderUTF8(stream);
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader());
 
         csvParser.getRecords().forEach(csvRecord -> {
             StellarSystem stellarSystem = new StellarSystem(csvRecord);
-            if (stellarSystem.getStarData().isComplete())
-                galaxy.addStellarSystem(stellarSystem);
+            galaxy.addStellarSystem(stellarSystem);
         });
 
         System.out.println("=== Stellar Systems Generated ===");

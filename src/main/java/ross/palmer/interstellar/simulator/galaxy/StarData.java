@@ -1,62 +1,55 @@
 package ross.palmer.interstellar.simulator.galaxy;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import javafx.geometry.Point3D;
 import org.apache.commons.csv.CSVRecord;
+import ross.palmer.interstellar.utilities.IdGenerator;
 
 import java.util.Objects;
-import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class StarData {
 
-    private final long id;
-    private Optional<String> name;
-    private final String bayer; // Bayer designation
-    private final String flamsteed; // Flamsteed designation
-    private final long primaryStarId;
-    private final int starsInSystem;
+    private long id;
+    private final String name;
+    private final String code;
 
     private final double x;
     private final double y;
     private final double z;
     private final Point3D coordinates;
-    private final String constellation;
+
+    private final double map_x;
+    private final double map_y;
 
     private final String spectFull;
     private final StarClass starClass;
     private final StarSequence starSequence;
 
     private final double magnitude;
-    private final double luminosity;
-//    private final double colorIndex;
-
-    private final boolean complete;
+//    private final double luminosity;
+    private final double colorIndex;
 
     public StarData(CSVRecord csvRecord) {
 
-        id = new Long(csvRecord.get("id"));
-        name = Optional.ofNullable(csvRecord.get("proper").equals("") ? null : csvRecord.get("proper"));
-        bayer = csvRecord.get("bayer").equals("") ? null : csvRecord.get("bayer");
-        flamsteed = csvRecord.get("flam").equals("") ? null : csvRecord.get("flam");
-        primaryStarId = new Long(csvRecord.get("comp_primary"));
-        starsInSystem = new Integer(csvRecord.get("comp"));
+        id = IdGenerator.getNextId("starId");
+        name = csvRecord.get("name").equals("") ? null : csvRecord.get("name");
+        code = csvRecord.get("code");
 
-        x = new Double(csvRecord.get("x"));
-        y = new Double(csvRecord.get("y"));
-        z = new Double(csvRecord.get("z"));
+        x = new Double(csvRecord.get("3d_x"));
+        y = new Double(csvRecord.get("3d_y"));
+        z = new Double(csvRecord.get("3d_z"));
         coordinates = new Point3D(x, y, z);
-        constellation = csvRecord.get("con");
 
-        spectFull = csvRecord.get("spect");
-        starClass = generateStarClass();
-        starSequence = generateStarSequence();
+        map_x = new Double(csvRecord.get("x"));
+        map_y = new Double(csvRecord.get("y"));
+
+        spectFull = csvRecord.get("spectrum");
+        starClass = generateStarClass(csvRecord.get("class"));
+        starSequence = generateStarSequence(csvRecord.get("type"));
 
         magnitude = new Double(csvRecord.get("absmag"));
-        luminosity = new Double(csvRecord.get("lum"));
-//        colorIndex = new Double(csvRecord.get("ci"));
-
-        complete = starClass != null && starSequence != null;
+//        luminosity = new Double(csvRecord.get("lum"));
+        colorIndex = new Double(csvRecord.get("colorindex").equals("None") ? "0.0" : csvRecord.get("colorindex"));
 
     }
 
@@ -64,27 +57,21 @@ public class StarData {
         return id;
     }
 
-    public Optional<String> getName() {
+    public String getName() {
         return name;
     }
-
-
 
     public Point3D getCoordinates() {
         return coordinates;
     }
 
-    public long getPrimaryStarId() {
-        return primaryStarId;
+    public String getCode() {
+        return code;
     }
 
-    public int getStarsInSystem() {
-        return starsInSystem;
-    }
-
-    public String getConstellation() {
-        return constellation;
-    }
+//    public String getConstellation() {
+//        return constellation;
+//    }
 
     public String getSpectFull() {
         return spectFull;
@@ -94,9 +81,9 @@ public class StarData {
         return magnitude;
     }
 
-    public double getLuminosity() {
-        return luminosity;
-    }
+//    public double getLuminosity() {
+//        return luminosity;
+//    }
 
     public double getX() {
         return x;
@@ -118,38 +105,11 @@ public class StarData {
         return starSequence;
     }
 
-    public boolean isComplete() {
-        return complete;
-    }
-
-    private StarClass generateStarClass() {
-
-        Pattern pattern = Pattern.compile("^[OABFGKM]");
-        Matcher matcher = pattern.matcher(spectFull);
-
-        if (!matcher.find())
-            return null;
-
-        String starClassString = spectFull.substring(matcher.start(), matcher.end());
-        if (matcher.start() == 0 && matcher.end() == 0)
-            return null;
-
+    private StarClass generateStarClass(String starClassString) {
         return StarClass.valueOf(starClassString);
-
     }
 
-    private StarSequence generateStarSequence() {
-
-        Pattern pattern = Pattern.compile("[VI]+");
-        Matcher matcher = pattern.matcher(spectFull);
-
-        if (!matcher.find())
-            return null;
-
-        String starSequenceString = spectFull.substring(matcher.start(), matcher.end());
-        if (matcher.start() == 0 && matcher.end() == 0)
-            return null;
-
+    private StarSequence generateStarSequence(String starSequenceString) {
         StarSequence starSequence = null;
         for (StarSequence sequenceEnum : StarSequence.values()) {
             if (sequenceEnum.stringValue.equals(starSequenceString)) {
