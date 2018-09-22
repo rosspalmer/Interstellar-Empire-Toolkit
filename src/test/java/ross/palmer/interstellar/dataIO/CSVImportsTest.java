@@ -24,8 +24,8 @@ public class CSVImportsTest {
                 .mapToDouble(stellarSystem -> stellarSystem.getStarData().getId())
                 .sum());
 
-        assertEquals(133, galaxy.getStellarSystems().stream()
-                .filter(stellarSystem -> stellarSystem.getStarData().getName().isPresent()).count());
+//        assertEquals(133, galaxy.getStellarSystems().stream()
+//                .filter(stellarSystem -> stellarSystem.getStarData().getName().isPresent()).count());
 //        assertEquals(2846, galaxy.getStellarSystems().stream()
 //                .filter(stellarSystem -> stellarSystem.getStarData().getBfDesignation().isPresent()).count());
 

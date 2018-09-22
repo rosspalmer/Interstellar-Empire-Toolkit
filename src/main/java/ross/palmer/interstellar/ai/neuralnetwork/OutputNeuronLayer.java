@@ -2,14 +2,14 @@ package ross.palmer.interstellar.ai.neuralnetwork;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 public class OutputNeuronLayer extends NeuronLayer {
 
-    public OutputNeuronLayer(long layerID, int numberOfOutputs) {
+    public OutputNeuronLayer(long layerID, int numberOfOutputs, Function<Long, Neuron> neuronGenerator) {
         super(layerID);
         for (int i = 0; i < numberOfOutputs; i++) {
-            Neuron newNeuron = new Neuron((long) i + 1);
-            addNeuron(newNeuron);
+            addNeuron(neuronGenerator.apply((long) i + 1));
         }
     }
 
