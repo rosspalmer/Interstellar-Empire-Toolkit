@@ -8,8 +8,8 @@ import java.util.function.Function;
 public class NeuralNetwork {
 
     private final long networkId;
-    private NeuronLayer inputLayer;
-    private NeuronLayer outputLayer;
+    private InputNeuronLayer inputLayer;
+    private OutputNeuronLayer outputLayer;
     private List<NeuronLayer> hiddenNeuronLayers;
 
     private Function<Double, Double> activationFunction;
@@ -62,11 +62,11 @@ public class NeuralNetwork {
         this.activationFunction = activationFunction;
     }
 
-    public NeuronLayer getInputLayer() {
+    public InputNeuronLayer getInputLayer() {
         return inputLayer;
     }
 
-    public void setInputLayer(NeuronLayer inputLayer) {
+    public void setInputLayer(InputNeuronLayer inputLayer) {
         this.inputLayer = inputLayer;
     }
 
@@ -78,11 +78,11 @@ public class NeuralNetwork {
         this.neuronGenerator = neuronGenerator;
     }
 
-    public NeuronLayer getOutputLayer() {
+    public OutputNeuronLayer getOutputLayer() {
         return outputLayer;
     }
 
-    public void setOutputLayer(NeuronLayer outputLayer) {
+    public void setOutputLayer(OutputNeuronLayer outputLayer) {
         this.outputLayer = outputLayer;
     }
 
