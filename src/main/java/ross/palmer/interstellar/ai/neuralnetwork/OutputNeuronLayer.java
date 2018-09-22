@@ -15,7 +15,7 @@ public class OutputNeuronLayer extends NeuronLayer {
 
     public Map<Long, Double> getOutputActivationValues() {
         Map<Long, Double> outputValues = new HashMap<>();
-        getNeuronSet().forEach(outputNeuron -> outputValues.put(outputNeuron.getNeuronId(),
+        getNeuronMap().values().forEach(outputNeuron -> outputValues.put(outputNeuron.getNeuronId(),
                 outputNeuron.getActivateFunctionValue()));
         return outputValues;
     }

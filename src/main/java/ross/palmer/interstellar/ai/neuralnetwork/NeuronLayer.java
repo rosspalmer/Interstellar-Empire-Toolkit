@@ -1,31 +1,29 @@
 package ross.palmer.interstellar.ai.neuralnetwork;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class NeuronLayer {
 
     private final long layerID;
-    private Set<Neuron> neuronSet;
+    private Map<Long, Neuron> neuronMap;
 
     public NeuronLayer(long layerID) {
         this.layerID = layerID;
-        neuronSet = new HashSet<>();
+        neuronMap = new HashMap<>();
     }
 
     public void addNeuron(Neuron neuron) {
-        if (neuronSet.contains(neuron))
+        if (neuronMap.containsKey(neuron.getNeuronId()))
             throw new RuntimeException("Trying to add neuron which already exists in set");
-        neuronSet.add(neuron);
+        neuronMap.put(neuron.getNeuronId(), neuron);
     }
 
-    public Set<Neuron> getNeuronSet() {
-        return neuronSet;
+    public Map<Long, Neuron> getNeuronMap() {
+        return neuronMap;
     }
 
     public void updateActivationFunctionValues(NeuronLayer inputLayer) {
-        neuronSet.forEach(neuron -> neuron.calculateActivationFunctionValue(inputLayer));
+        neuronMap.values().forEach(neuron -> neuron.calculateActivationFunctionValue(inputLayer));
     }
 
     @Override

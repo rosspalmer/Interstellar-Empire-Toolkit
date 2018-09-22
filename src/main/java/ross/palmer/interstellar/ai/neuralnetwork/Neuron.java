@@ -1,9 +1,6 @@
 package ross.palmer.interstellar.ai.neuralnetwork;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -24,7 +21,7 @@ public class Neuron {
 
     public void calculateActivationFunctionValue(NeuronLayer neuronLayer) {
 
-        Set<Neuron> inputNeurons = neuronLayer.getNeuronSet();
+        Collection<Neuron> inputNeurons = neuronLayer.getNeuronMap().values();
 
         double weightInputProductSum = inputNeurons.stream()
                 .mapToDouble(inputNeuron -> {
@@ -78,6 +75,10 @@ public class Neuron {
 
     public void getWeight(long inputNeuronId) {
         weights.get(inputNeuronId);
+    }
+
+    public Map<Long, Double> getWeights() {
+        return weights;
     }
 
     public void setWeight(long inputNeuronId, double weight) {

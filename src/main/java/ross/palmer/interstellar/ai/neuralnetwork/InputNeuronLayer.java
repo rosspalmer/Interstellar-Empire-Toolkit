@@ -13,9 +13,9 @@ public class InputNeuronLayer extends NeuronLayer {
     }
 
     public void setInputValues(Map<Long, Double> inputValues) {
-        getNeuronSet().forEach(inputNeuron -> {
-            if (inputValues.containsKey(inputNeuron.getNeuronId()))
-                inputNeuron.setActivateFunctionValue(inputValues.get(inputNeuron.getNeuronId()));
+        getNeuronMap().forEach((neuronId, neuron) -> {
+            if (inputValues.containsKey(neuronId))
+                neuron.setActivateFunctionValue(inputValues.get(neuronId));
         });
     }
 
