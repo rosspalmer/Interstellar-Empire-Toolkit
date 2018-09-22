@@ -14,7 +14,7 @@ public class Neuron {
     private double bias;
     private double activateFunctionValue;
 
-    private Function<Long, Double> activationFunction;
+    private Function<Double, Double> activationFunction;
     private Supplier<Double> newWeightGenerator;
 
     public Neuron(long neuronId) {
@@ -22,7 +22,7 @@ public class Neuron {
         weights = new HashMap<>();
     }
 
-    public void calculateActivationFunction(NeuronLayer neuronLayer) {
+    public void calculateActivationFunctionValue(NeuronLayer neuronLayer) {
 
         Set<Neuron> inputNeurons = neuronLayer.getNeuronSet();
 
@@ -42,8 +42,9 @@ public class Neuron {
 
         }).sum();
 
-        double activationFunctionX = weightInputProductSum + bias;
+        double activationFunctionX = weightInputProductSum + getBias();
 
+        setActivateFunctionValue(activationFunction.apply(activationFunctionX));
 
     }
 
@@ -55,7 +56,7 @@ public class Neuron {
         this.activateFunctionValue = activateFunctionValue;
     }
 
-    public void setActivationFunction(Function<Long, Double> activationFunction) {
+    public void setActivationFunction(Function<Double, Double> activationFunction) {
         this.activationFunction = activationFunction;
     }
 
@@ -93,7 +94,6 @@ public class Neuron {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(neuronId);
     }
 }
