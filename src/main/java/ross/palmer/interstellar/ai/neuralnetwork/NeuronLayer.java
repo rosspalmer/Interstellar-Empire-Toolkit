@@ -22,8 +22,16 @@ public class NeuronLayer {
         return neuronMap;
     }
 
+    public long getLayerID() {
+        return layerID;
+    }
+
     public void updateActivationFunctionValues(NeuronLayer inputLayer) {
         neuronMap.values().forEach(neuron -> neuron.calculateActivationFunctionValue(inputLayer));
+    }
+
+    public int getNumberOfNeurons() {
+        return neuronMap.size();
     }
 
     @Override

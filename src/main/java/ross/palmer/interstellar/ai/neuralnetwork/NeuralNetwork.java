@@ -20,6 +20,13 @@ public class NeuralNetwork {
         hiddenNeuronLayers = new ArrayList<>();
     }
 
+    public NeuralNetwork(long networkId, NeuralNetwork networkToCopy) {
+        this.networkId = networkId;
+        inputLayer = new InputNeuronLayer(networkToCopy.getInputLayer().getLayerID(),
+                networkToCopy.getInputLayer().getNumberOfNeurons());
+        hiddenNeuronLayers = new ArrayList<>();
+    }
+
     public void addHiddenNeuronLayer(NeuronLayer neuronLayer) {
         hiddenNeuronLayers.add(neuronLayer);
     }
@@ -68,6 +75,10 @@ public class NeuralNetwork {
 
     public void setInputLayer(InputNeuronLayer inputLayer) {
         this.inputLayer = inputLayer;
+    }
+
+    public List<NeuronLayer> getHiddenNeuronLayers() {
+        return hiddenNeuronLayers;
     }
 
     public long getNetworkId() {

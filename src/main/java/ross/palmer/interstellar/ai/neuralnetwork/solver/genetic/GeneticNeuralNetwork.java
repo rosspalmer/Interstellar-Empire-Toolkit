@@ -8,6 +8,7 @@ import java.util.Map;
 public class GeneticNeuralNetwork extends NeuralNetwork {
 
     private Map<Long, GeneticCodeLayer> geneticCodeLayers;
+    private double objectiveValue;
 
     public GeneticNeuralNetwork(long networkId) {
         super(networkId);
@@ -30,6 +31,13 @@ public class GeneticNeuralNetwork extends NeuralNetwork {
         });
 
         return childNetwork;
+    }
 
+    public double getObjectiveValue() {
+        return objectiveValue;
+    }
+
+    public void setObjectiveValue(double objectiveValue) {
+        this.objectiveValue = objectiveValue;
     }
 }
